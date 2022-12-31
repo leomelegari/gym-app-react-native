@@ -9,8 +9,7 @@ import {
 
 import { THEME } from "./src/theme";
 import { Loading } from "@components/Loading";
-import { SignIn } from "@screens/SignIn";
-import { SignUp } from "@screens/SignUp";
+import { Routes } from "@routes/index";
 
 export default function App() {
   // fontsLoaded retorna um booleano se nossa fonte foi carregada
@@ -24,7 +23,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <SignUp /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>
   );
 }

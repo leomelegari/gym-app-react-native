@@ -1,4 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
 import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
+
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 import BgImg from "@assets/background.png";
 import LogoSvg from "@assets/logo.svg";
@@ -6,15 +9,22 @@ import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 
 export function SignIn() {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function handleNewAccount() {
+    navigation.navigate("signUp");
+  }
+
   return (
     // ScrollView faz com que seja ativado a rolagem da tela quando o teclado for aberto
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       showsHorizontalScrollIndicator={false}
     >
-      <VStack flex={1} bg="gray.700" px={10}>
+      <VStack flex={1} px={10}>
         <Image
           source={BgImg}
+          defaultSource={BgImg}
           alt="Pessoas treinando"
           resizeMode="contain"
           position="absolute"
@@ -47,7 +57,11 @@ export function SignIn() {
           </Text>
         </Center>
 
-        <Button variant="outline" title="Criar Conta" />
+        <Button
+          variant="outline"
+          title="Criar Conta"
+          onPress={handleNewAccount}
+        />
       </VStack>
     </ScrollView>
   );
